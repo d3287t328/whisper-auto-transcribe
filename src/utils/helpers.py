@@ -21,13 +21,13 @@ def convert_to_seconds(time):
     >>> convert_to_seconds('33.5')      # only secs
     33.5
     """
-    factors = (1, 60, 3600)
-
     if isinstance(time, str):
         time = [float(part.replace(",", ".")) for part in time.split(":")]
 
     if not isinstance(time, (tuple, list)):
         return time
+
+    factors = (1, 60, 3600)
 
     return sum(mult * part for mult, part in zip(factors, reversed(time)))
 
@@ -36,9 +36,7 @@ def clean_filepath(filepath):
     # Use str.maketrans() and str.translate() to remove disallowed characters
     disallowed = "*?<>|"
     translation_table = str.maketrans("", "", disallowed)
-    clean_filepath = filepath.translate(translation_table)
-
-    return clean_filepath
+    return filepath.translate(translation_table)
 
 
 def format_timestamp(seconds: float, always_include_hours: bool = False):

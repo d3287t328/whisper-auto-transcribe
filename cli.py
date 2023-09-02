@@ -101,7 +101,7 @@ def cli():
                 and "audio" in media_file_type
                 or "video" in media_file_type
             ):
-                subtitle_path = output_dir / (media_file.stem + ".srt")
+                subtitle_path = output_dir / f"{media_file.stem}.srt"
                 transcribe(
                     str(media_file),
                     subtitle=str(subtitle_path),

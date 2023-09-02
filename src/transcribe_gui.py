@@ -65,7 +65,7 @@ def create_source_tab():
             "quiet": True,
         }
 
-        if video_url == None or video_url.strip() == "":
+        if video_url is None or video_url.strip() == "":
             return None
 
         with YoutubeDL(ydl_opts) as ydl:
